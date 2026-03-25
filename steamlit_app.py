@@ -44,6 +44,10 @@ if ingredients_list:
       st.subheader(fruit_chosen + 'Nutrition Information')
       smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/" + search_on)
       sf_df=st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+      try:
+          sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+      except:
+          st.warning("Could not fetch nutrition info for " + fruit_chosen)
       
     #st.write(ingredients_string)
 
